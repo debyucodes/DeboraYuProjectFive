@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <script src="https://kit.fontawesome.com/3e2ecb9775.js" crossorigin="anonymous"></script>
   </React.StrictMode>,
   document.getElementById('root')
 );
