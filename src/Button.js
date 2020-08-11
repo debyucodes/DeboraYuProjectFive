@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart , faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
 class Button extends Component {
   constructor() {
     super();
-
-    this.state ={}
+    this.state ={
+      dog: [],
+    }
+    // this.getAPI = this.getAPI.bind(this);
   }
 
   dislikeClick(){
@@ -16,8 +20,8 @@ class Button extends Component {
   // refreshPage() {
   //   window.location.reload(false);
   
-
-  getAPI() {
+  // function to make another API call
+  getAPI = () => {
 
     axios({
       url: 'https://api.thedogapi.com/v1/images/search',
@@ -39,11 +43,19 @@ class Button extends Component {
 
   }
 
+  // function to clear the previous image and fetch a new one
+
+
   render() {
     return(
       <div>
-        <button className="dislike" onClick={this.dislikeClick}>Dislike</button>
-        <button onClick={this.getAPI}className="like"> Like </button>
+        <button className="dislike" onClick={this.dislikeClick}>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+
+        <button onClick={this.getAPI}className="like"> 
+          <FontAwesomeIcon icon={faHeart} />
+        </button>
 
       </div>
     )

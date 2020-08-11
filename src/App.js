@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import Button from './Button';
-// import { fas fa-paw } from '@fortawesome/react-fontawesome';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaw , faComments , faCog} from '@fortawesome/free-solid-svg-icons';
 
 
 // The dog API - key: 8769c416-f65c-4a98-9456-5478f789a049
@@ -59,7 +59,16 @@ class App extends Component {
       <div className="App">
 
         <div className="mainContainer">
-          <h1>huehuehue doge<i className="fas fa-paw"></i></h1>
+          <nav>
+            <FontAwesomeIcon icon={ faCog } />
+            <h1> paw-nder  
+              <FontAwesomeIcon icon={ faPaw } />
+            </h1>
+
+            <FontAwesomeIcon icon={ faComments } />
+          </nav>
+
+
           
           <div className="imageContainer">
             <img src={this.state.dog.url} alt={''}></img >

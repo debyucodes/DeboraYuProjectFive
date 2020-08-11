@@ -1,13 +1,23 @@
 .App {
   text-align: center;
-  background: lightgrey;
+  background: radial-gradient(#FD297B, #FF5864, #FF655B);
+  font-size: 62.5%;
 }
 
 .mainContainer {
-  border: 5px solid red;
+  border: 5px solid white;
   border-radius: 30px;
   width: 400px;
   margin: 0 auto;
+  background: lightgrey;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
 }
 
 .imageContainer {
@@ -25,20 +35,21 @@ img {
 /* like button */
 .like,
 .dislike {
-  background-color: white;
+  color: white;
   border: none;
-  margin: 0 100px;
+  margin: 0 50px 50px 50px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
+  font-size: 3rem;
 }
 
 .like {
-  color: green;
+  background-color: #62ECA7;
 }
 
 .dislike {
-  color: red;
+  background-color: #F74578;
 }
 
 
