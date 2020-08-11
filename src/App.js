@@ -3,7 +3,9 @@ import axios from 'axios';
 import './App.css';
 import Button from './Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaw , faComments , faCog} from '@fortawesome/free-solid-svg-icons';
+import { faPaw , faComments , faCog , faAngleLeft, faFlag} from '@fortawesome/free-solid-svg-icons';
+import firebase from './firebase';
+// import Chat from './Chat';
 
 
 // The dog API - key: 8769c416-f65c-4a98-9456-5478f789a049
@@ -52,20 +54,25 @@ class App extends Component {
     })
   }
 
+  reportClick(){
+    alert('What is wrong with you? How can you report a dog.')
+  }
+
 
   render() {
     
     return (
       <div className="App">
 
-        <div className="mainContainer">
+        <div id="main" className="mainContainer">
           <nav>
-            <FontAwesomeIcon icon={ faCog } />
-            <h1> paw-nder  
-              <FontAwesomeIcon icon={ faPaw } />
-            </h1>
-
-            <FontAwesomeIcon icon={ faComments } />
+            <a className="setting">
+              <FontAwesomeIcon icon={ faCog } />
+            </a>
+            <h1> paw<FontAwesomeIcon icon={ faPaw } />nder </h1>
+            <a href="#chat" className="chat">
+              <FontAwesomeIcon icon={ faComments } />
+            </a>
           </nav>
 
 
@@ -76,8 +83,136 @@ class App extends Component {
           <h2>{this.state.dog.name}</h2>
           <Button /> 
         </div>    
-        
+
+        {/* <Chat /> */}
+
+        <div id="chat" className="chatContainer">
+            <nav>
+              <a href="#main" class="paw">
+                <FontAwesomeIcon icon={ faPaw } />
+              </a>
+              <h1>
+                <FontAwesomeIcon icon={ faComments } />
+              </h1>
+              
+              <div>
+                {/* empty div for aesthetic */}
+              </div>
+            </nav>
+
+            <h2>New Matches</h2>
+            <ul className="topBar">
+              <li className="circleImage">
+                <img src={this.state.dog.url} alt={''}></img>
+                <p>92 Likes</p>
+              </li>
+              <li className="circleImage">
+                <img src={this.state.dog.url} alt={''}></img>
+                <p>dog 1</p>
+              </li>
+              <li className="circleImage">
+                <img src={this.state.dog.url} alt={''}></img>
+                <p>dog 2</p>
+              </li>
+              <li className="circleImage">
+                <img src={this.state.dog.url} alt={''}></img>
+                <p>dog 3</p>
+              </li>            
+            </ul>
+
+            <h2>Messages</h2>
+            <div class="messages">
+              <a href="#sendMessage" className="match">
+                <div className="circleImage">
+                    <img src={this.state.dog.url} alt={''}></img>
+                </div>
+                <div className="matchText">
+                  <h3>Smol Doge</h3>
+                  <p>woof!</p>
+                </div>
+              </a>
+
+              <a href="#sendMessage" className="match">
+                <div className="circleImage">
+                    <img src={this.state.dog.url} alt={''}></img>
+                </div>
+                <div className="matchText">
+                  <h3>Pawsome Ruff</h3>
+                  <p>woof!</p>
+                </div>
+              </a>
+
+              <a href="#sendMessage" className="match">
+                <div className="circleImage">
+                    <img src={this.state.dog.url} alt={''}></img>
+                </div>
+                <div className="matchText">
+                  <h3>Fluffy Floofer</h3>
+                  <p>woof!</p>
+                </div>
+              </a>
+
+              <a href="#sendMessage" className="match">
+                <div className="circleImage">
+                    <img src={this.state.dog.url} alt={''}></img>
+                </div>
+                <div className="matchText">
+                  <h3>Borky Boi</h3>
+                  <p>woof!</p>
+                </div>
+              </a>
+
+              <a href="#sendMessage" className="match">
+                <div className="circleImage">
+                    <img src={this.state.dog.url} alt={''}></img>
+                </div>
+                <div className="matchText">
+                  <h3>Wet Snout</h3>
+                  <p>woof!</p>
+                </div>
+              </a>
+              
+            </div>
+
       </div>
+
+      <div id="sendMessage" className="sendMessage">
+        <nav>
+          <a href="#chat">
+            <FontAwesomeIcon icon={ faAngleLeft } />
+          </a>
+
+          <div className="circleImage">
+            <img src={this.state.dog.url} alt={''}></img>
+          </div>
+          <button onClick={this.reportClick} className="report">
+            <FontAwesomeIcon icon={ faFlag } />
+          </button>
+          
+        </nav>
+
+        <div className="dogTalk">
+          <div className="circleImage">
+            <img src={this.state.dog.url} alt={''}></img>
+          </div>
+          <div class="whatDogSaid">
+            <p>woof woof woof</p>
+          </div>
+        </div>
+
+        <form className="whatYouSay">
+          <label for="whatYouSay" class="sr-only">Search
+          </label>
+          <input type="whatYouSay" name="whatYouSay" placeholder="Message"></input>
+          <button className="sendButton">Send</button>
+        </form>
+
+      </div>
+      
+      </div>
+
+
+
     );
 
   }

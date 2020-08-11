@@ -14,7 +14,7 @@ class Button extends Component {
   }
 
   dislikeClick(){
-    alert("Well, you're a monster!");
+    alert("Well, you're a monster");
   }
 
   // refreshPage() {
