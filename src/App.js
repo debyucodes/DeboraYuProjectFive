@@ -27,6 +27,8 @@ class App extends Component {
     //create an array for easier access specific data
     this.state ={
       dog: [],
+      messages: [],
+      userInput: '',
     }
   }
 
@@ -52,8 +54,20 @@ class App extends Component {
         dog: results.data[0],
       })
     })
+
+    // Use firebase to store messages
+    const dbRef = firebase.database().ref();
+
+    dbRef.on('value', (snapshot) => {
+      console.log(snapshot.val() );
+
+      const data = snapshot.val();
+      });
+    
   }
 
+
+  // report button in message page
   reportClick(){
     alert('What is wrong with you? How can you report a dog.')
   }
@@ -88,7 +102,7 @@ class App extends Component {
 
         <div id="chat" className="chatContainer">
             <nav>
-              <a href="#main" class="paw">
+              <a href="#main" className="paw">
                 <FontAwesomeIcon icon={ faPaw } />
               </a>
               <h1>
@@ -121,7 +135,7 @@ class App extends Component {
             </ul>
 
             <h2>Messages</h2>
-            <div class="messages">
+            <div className="messages">
               <a href="#sendMessage" className="match">
                 <div className="circleImage">
                     <img src={this.state.dog.url} alt={''}></img>
@@ -195,15 +209,27 @@ class App extends Component {
           <div className="circleImage">
             <img src={this.state.dog.url} alt={''}></img>
           </div>
-          <div class="whatDogSaid">
+          <div className="whatDogSaid">
             <p>woof woof woof</p>
+
+            <ul>
+              {this.state.messages.map( (oneOfTheMessages) => {
+                return(
+                  <li>
+                    <p>{oneOfTheMessages}</p>
+                  </li>
+                )
+                })
+              }
+            </ul>
+
           </div>
         </div>
 
-        <form className="whatYouSay">
-          <label for="whatYouSay" class="sr-only">Search
+        <form className="whatYouSay" action="submit">
+          <label htmlFor="whatYouSay" className="sr-only">Search
           </label>
-          <input type="whatYouSay" name="whatYouSay" placeholder="Message"></input>
+          <input type="text" name="whatYouSay" placeholder="Message" id="whatYouSay"></input>
           <button className="sendButton">Send</button>
         </form>
 
