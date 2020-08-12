@@ -78,6 +78,26 @@ class App extends Component {
     
   }
 
+  //handleChange for user input
+  handleChange = (event) => {
+    this.setState({
+      userInput: event.target.value,
+    })
+
+    console.log(event.target.value)
+  }
+
+  //handleClick to submit
+  handleClick = (event) => {
+    event.preventDefault();
+    const dbRef = firebase.database().ref();
+    dbRef.push(this.state.userInput);
+
+    this.setState({
+      userInput: ""
+    })
+  }
+
 
   // report button in message page
   reportClick(){
@@ -226,10 +246,10 @@ class App extends Component {
           </div>
         </div>
 
-          <ul>
+          <ul class="sentMessage">
             {this.state.messages.map( (oneOfTheMessages) => {
               return(
-                <li class="sentMessage">
+                <li >
                   <p>{oneOfTheMessages}</p>
                 </li>
               )
@@ -238,10 +258,14 @@ class App extends Component {
           </ul>
 
         <form className="whatYouSay" action="submit">
-          <label htmlFor="whatYouSay" className="sr-only">Search
+
+          <label htmlFor="userInput" className="sr-only">Message
           </label>
-          <input type="text" name="whatYouSay" placeholder="Message" id="whatYouSay"></input>
-          <button className="sendButton">Send</button>
+
+          <input onChange={this.handleChange} type="text" name="userInput" placeholder="Message" id="userInput"></input>
+
+          <button onClick={this.handleClick }className="sendButton">Send</button>
+
         </form>
 
       </div>

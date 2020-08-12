@@ -130,22 +130,31 @@ h2 {
 
 .dogTalk {
   display: flex;
+  margin-left: 20px;
 }
 
 .whatDogSaid {
   background-color: lightgrey;
-  width: 200px;
-  border-radius: 30px 30px 30px 0;
-  margin: 0 0 500px 20px;
-  
+  border-radius: 20px 20px 20px 0;
+  margin: 0 0 20px 10px;
+  max-width: 150px;
+  padding: 10px;
 }
 
-/* .sentMessage p {
-  background-color: lightgrey;
-  width: 250px;
-  border-radius: 30px 30px 30px 0;
-  margin: 0 0 500px 20px;
-} */
+.sentMessage {
+  margin-bottom: 300px;
+}
+
+.sentMessage li {
+  background-color: #5FC9F8;
+  max-width: 250px;
+  border-radius: 20px 20px 0 20px;
+  margin-bottom: 20px;
+  margin-left: 70px;
+  list-style: none;
+  min-width: 150px;
+  padding: 10px;
+}
 
 .whatYouSay {
   border-top: 2px solid lightgrey;
