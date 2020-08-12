@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class Button extends Component {
+class Chat extends Component {
   render() {
     return(
       <div id="chat" className="chatContainer">

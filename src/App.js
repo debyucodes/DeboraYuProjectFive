@@ -58,11 +58,23 @@ class App extends Component {
     // Use firebase to store messages
     const dbRef = firebase.database().ref();
 
-    dbRef.on('value', (snapshot) => {
-      console.log(snapshot.val() );
+    dbRef.on('value', (response) => {
+      console.log(response.val() );
 
-      const data = snapshot.val();
-      });
+      const data = response.val();
+
+      const newMessagesArray = [];
+
+      // Use a for in loop to iterate through our object
+      for (let item in data) {
+        newMessagesArray.push(data[item]);
+      }
+
+      this.setState({
+        messages: newMessagesArray
+      })
+    
+    });
     
   }
 
@@ -211,20 +223,19 @@ class App extends Component {
           </div>
           <div className="whatDogSaid">
             <p>woof woof woof</p>
-
-            <ul>
-              {this.state.messages.map( (oneOfTheMessages) => {
-                return(
-                  <li>
-                    <p>{oneOfTheMessages}</p>
-                  </li>
-                )
-                })
-              }
-            </ul>
-
           </div>
         </div>
+
+          <ul>
+            {this.state.messages.map( (oneOfTheMessages) => {
+              return(
+                <li class="sentMessage">
+                  <p>{oneOfTheMessages}</p>
+                </li>
+              )
+              })
+            }
+          </ul>
 
         <form className="whatYouSay" action="submit">
           <label htmlFor="whatYouSay" className="sr-only">Search
