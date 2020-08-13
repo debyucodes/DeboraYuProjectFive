@@ -1,8 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Amaranth&display=swap');
+
 .App {
   text-align: center;
   background: radial-gradient(#FD297B, #FF5864, #FF655B);
   font-size: 62.5%;
 }
+
+body {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+
+/* font-family: 'Amaranth', sans-serif;
+font-family: 'ABeeZee', sans-serif; */
 
 /* -------- */
 /* main app */
@@ -22,6 +32,7 @@ nav {
   align-items: center;
   color: #FF5864;
   font-size: 1.3rem;
+  font-family: 'Amaranth', sans-serif;
 }
 
 .imageContainer {
@@ -142,7 +153,7 @@ h2 {
 }
 
 .sentMessage {
-  margin-bottom: 300px;
+  margin-bottom: 150px;
 }
 
 .sentMessage li {
@@ -162,7 +173,7 @@ h2 {
 
 .whatYouSay input {
   width: 280px;
-  margin-top: 20px;
+  margin: 10px 0;
   padding: 10px 0;
 }
 .sendButton {
@@ -193,7 +204,7 @@ h2 {
 .dislike {
   color: white;
   border: none;
-  margin: 0 50px 50px 50px;
+  margin: 20px 50px;
   border-radius: 50%;
   width: 80px;
   height: 80px;

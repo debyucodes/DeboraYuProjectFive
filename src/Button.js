@@ -16,32 +16,7 @@ class Button extends Component {
   dislikeClick(){
     alert("Well, you're a monster");
   }
-
-  // refreshPage() {
-  //   window.location.reload(false);
   
-  // function to make another API call
-  getAPI = () => {
-
-    axios({
-      url: 'https://api.thedogapi.com/v1/images/search',
-      method: 'GET',
-      responseType: 'json',
-      params: {
-        api_key: '8769c416-f65c-4a98-9456-5478f789a049',
-        format: 'json',
-        hasImage: true,
-      }
-    }).then((results) => {
-      console.log(results);
-      console.log(results.data[0].url);
-
-      this.setState({
-        dog: results.data[0],
-      })
-    })
-
-  }
 
   // function to clear the previous image and fetch a new one
 
@@ -53,8 +28,9 @@ class Button extends Component {
           <FontAwesomeIcon icon={faTimes} />
         </button>
 
+        {/* <button onClick={ () => window.location.reload(false)}className="like">  */}
         <button onClick={this.getAPI}className="like"> 
-          <FontAwesomeIcon icon={faHeart} />
+          <FontAwesomeIcon icon={ faHeart } />
         </button>
 
       </div>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Button from './Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaw , faComments , faCog , faAngleLeft, faFlag} from '@fortawesome/free-solid-svg-icons';
+import { faPaw , faComments , faCog , faAngleLeft, faFlag, faTimes , faHeart } from '@fortawesome/free-solid-svg-icons';
 import firebase from './firebase';
 // import Chat from './Chat';
 
@@ -27,13 +27,13 @@ class App extends Component {
     //create an array for easier access specific data
     this.state ={
       dog: [],
+      results: [],
+      counter: 0,
+      dogArray: [],
       messages: [],
       userInput: '',
     }
   }
-
-  // library.add()
-
 
   // make an axios call to api to search for a random dog to display on page
   componentDidMount() {
@@ -45,13 +45,16 @@ class App extends Component {
         api_key: '8769c416-f65c-4a98-9456-5478f789a049',
         format: 'json',
         hasImage: true,
+        limit: 100,
       }
     }).then((results) => {
       console.log(results);
       console.log(results.data[0].url);
 
       this.setState({
-        dog: results.data[0],
+        dog: results.data[this.state.counter].url,
+        results: results.data,
+        // currentImage: this.state.dog.url,
       })
     })
 
@@ -78,6 +81,20 @@ class App extends Component {
     
   }
 
+  //Like button
+  handleLike = () => {
+    const newCounter = this.state.counter + 1;
+    console.log(newCounter);
+    
+    this.setState({     
+      counter: newCounter,
+      dog: this.state.results[this.state.counter].url,
+    })
+
+  }
+  
+  // console.log(results)
+
   //handleChange for user input
   handleChange = (event) => {
     this.setState({
@@ -92,10 +109,22 @@ class App extends Component {
     event.preventDefault();
     const dbRef = firebase.database().ref();
     dbRef.push(this.state.userInput);
-
+    
     this.setState({
-      userInput: ""
+      userInput: ''
     })
+  }
+
+  //Button to delete a message
+  deleteMessage = (message) => {
+    console.log(message);
+    const dbRef = firebase.database().ref();
+    dbRef.child(message).remove();
+  }
+
+  //dislike button
+  dislikeClick(){
+    alert("Well, you're a monster");
   }
 
 
@@ -103,6 +132,7 @@ class App extends Component {
   reportClick(){
     alert('What is wrong with you? How can you report a dog.')
   }
+
 
 
   render() {
@@ -124,10 +154,23 @@ class App extends Component {
 
           
           <div className="imageContainer">
-            <img src={this.state.dog.url} alt={''}></img >
+            <img src={this.state.dog} alt={''}></img >
           </div>
-          <h2>{this.state.dog.name}</h2>
-          <Button /> 
+
+          <div>
+
+            <button className="dislike" onClick={this.dislikeClick}>
+              <FontAwesomeIcon icon={faTimes} />
+            </button>
+
+            {/* <button onClick={ () => window.location.reload(false)}className="like">  */}
+            <button onClick={this.handleLike}className="like"> 
+              <FontAwesomeIcon icon={ faHeart } />
+          </button>
+
+          </div>
+
+          {/* <Button />  */}
         </div>    
 
         {/* <Chat /> */}
@@ -149,48 +192,29 @@ class App extends Component {
             <h2>New Matches</h2>
             <ul className="topBar">
               <li className="circleImage">
-                <img src={this.state.dog.url} alt={''}></img>
+                <img src={this.state.dog} alt={''}></img>
                 <p>92 Likes</p>
               </li>
               <li className="circleImage">
-                <img src={this.state.dog.url} alt={''}></img>
-                <p>dog 1</p>
+                <img src={this.state.dog} alt={''}></img>
+                <p>Smol Doge</p>
               </li>
               <li className="circleImage">
-                <img src={this.state.dog.url} alt={''}></img>
-                <p>dog 2</p>
+                <img src={this.state.dog} alt={''}></img>
+                <p>Borky Boi</p>
               </li>
               <li className="circleImage">
-                <img src={this.state.dog.url} alt={''}></img>
-                <p>dog 3</p>
+                <img src={this.state.dog} alt={''}></img>
+                <p>Ruff Pawsome</p>
               </li>            
             </ul>
 
             <h2>Messages</h2>
             <div className="messages">
-              <a href="#sendMessage" className="match">
-                <div className="circleImage">
-                    <img src={this.state.dog.url} alt={''}></img>
-                </div>
-                <div className="matchText">
-                  <h3>Smol Doge</h3>
-                  <p>woof!</p>
-                </div>
-              </a>
 
               <a href="#sendMessage" className="match">
                 <div className="circleImage">
-                    <img src={this.state.dog.url} alt={''}></img>
-                </div>
-                <div className="matchText">
-                  <h3>Pawsome Ruff</h3>
-                  <p>woof!</p>
-                </div>
-              </a>
-
-              <a href="#sendMessage" className="match">
-                <div className="circleImage">
-                    <img src={this.state.dog.url} alt={''}></img>
+                    <img src={this.state.dog} alt={''}></img>
                 </div>
                 <div className="matchText">
                   <h3>Fluffy Floofer</h3>
@@ -200,20 +224,40 @@ class App extends Component {
 
               <a href="#sendMessage" className="match">
                 <div className="circleImage">
-                    <img src={this.state.dog.url} alt={''}></img>
+                    <img src={this.state.dog} alt={''}></img>
                 </div>
                 <div className="matchText">
-                  <h3>Borky Boi</h3>
+                  <h3>Wet Nose</h3>
                   <p>woof!</p>
                 </div>
               </a>
 
               <a href="#sendMessage" className="match">
                 <div className="circleImage">
-                    <img src={this.state.dog.url} alt={''}></img>
+                    <img src={this.state.dog} alt={''}></img>
                 </div>
                 <div className="matchText">
-                  <h3>Wet Snout</h3>
+                  <h3>Fluffy Floofer</h3>
+                  <p>woof!</p>
+                </div>
+              </a>
+
+              <a href="#sendMessage" className="match">
+                <div className="circleImage">
+                    <img src={this.state.dog} alt={''}></img>
+                </div>
+                <div className="matchText">
+                  <h3>Fluffy Floofer</h3>
+                  <p>woof!</p>
+                </div>
+              </a>
+
+              <a href="#sendMessage" className="match">
+                <div className="circleImage">
+                    <img src={this.state.dog} alt={''}></img>
+                </div>
+                <div className="matchText">
+                  <h3>Fluffy Floofer</h3>
                   <p>woof!</p>
                 </div>
               </a>
@@ -229,7 +273,7 @@ class App extends Component {
           </a>
 
           <div className="circleImage">
-            <img src={this.state.dog.url} alt={''}></img>
+            <img src={this.state.dog} alt={''}></img>
           </div>
           <button onClick={this.reportClick} className="report">
             <FontAwesomeIcon icon={ faFlag } />
@@ -239,18 +283,23 @@ class App extends Component {
 
         <div className="dogTalk">
           <div className="circleImage">
-            <img src={this.state.dog.url} alt={''}></img>
+            <img src={this.state.dog} alt={''}></img>
           </div>
           <div className="whatDogSaid">
             <p>woof woof woof</p>
           </div>
         </div>
 
-          <ul class="sentMessage">
+          <ul className="sentMessage">
             {this.state.messages.map( (oneOfTheMessages) => {
               return(
-                <li >
+                <li key={oneOfTheMessages.id}>
                   <p>{oneOfTheMessages}</p>
+                  
+                  <button onClick={ () => this.deleteMessage(oneOfTheMessages.id)}>
+                    <FontAwesomeIcon icon={ faTimes } />
+                  </button>
+
                 </li>
               )
               })
@@ -262,7 +311,7 @@ class App extends Component {
           <label htmlFor="userInput" className="sr-only">Message
           </label>
 
-          <input onChange={this.handleChange} type="text" name="userInput" placeholder="Message" id="userInput"></input>
+          <input onChange={this.handleChange} type="text" name="userInput" placeholder="Message" value={this.state.userInput} id="userInput"></input>
 
           <button onClick={this.handleClick }className="sendButton">Send</button>
 
