@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/DeboraYuProjectFive/static/css/main.d64a339e.chunk.css",
+    "main.css": "/DeboraYuProjectFive/static/css/main.f205a3e0.chunk.css",
     "main.js": "/DeboraYuProjectFive/static/js/main.0a57d7ce.chunk.js",
     "main.js.map": "/DeboraYuProjectFive/static/js/main.0a57d7ce.chunk.js.map",
     "runtime-main.js": "/DeboraYuProjectFive/static/js/runtime-main.168b5fcf.js",
@@ -8,15 +8,15 @@
     "static/js/2.528fb9b0.chunk.js": "/DeboraYuProjectFive/static/js/2.528fb9b0.chunk.js",
     "static/js/2.528fb9b0.chunk.js.map": "/DeboraYuProjectFive/static/js/2.528fb9b0.chunk.js.map",
     "index.html": "/DeboraYuProjectFive/index.html",
-    "precache-manifest.a8e579405ef1cd021e70a0f3b59253e4.js": "/DeboraYuProjectFive/precache-manifest.a8e579405ef1cd021e70a0f3b59253e4.js",
+    "precache-manifest.6cb4982b25ec1c4e717c686c83b83085.js": "/DeboraYuProjectFive/precache-manifest.6cb4982b25ec1c4e717c686c83b83085.js",
     "service-worker.js": "/DeboraYuProjectFive/service-worker.js",
-    "static/css/main.d64a339e.chunk.css.map": "/DeboraYuProjectFive/static/css/main.d64a339e.chunk.css.map",
+    "static/css/main.f205a3e0.chunk.css.map": "/DeboraYuProjectFive/static/css/main.f205a3e0.chunk.css.map",
     "static/js/2.528fb9b0.chunk.js.LICENSE.txt": "/DeboraYuProjectFive/static/js/2.528fb9b0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.168b5fcf.js",
     "static/js/2.528fb9b0.chunk.js",
-    "static/css/main.d64a339e.chunk.css",
+    "static/css/main.f205a3e0.chunk.css",
     "static/js/main.0a57d7ce.chunk.js"
   ]
 }
