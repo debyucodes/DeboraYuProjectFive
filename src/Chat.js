@@ -37,13 +37,8 @@ class Chat extends Component {
               <ul className="sentMessage">
                 {this.props.messages.map( (oneOfTheMessages) => {
                   return(
-                    <li key={oneOfTheMessages.id}>
+                    <li key={oneOfTheMessages.item}>
                       <p>{oneOfTheMessages}</p>
-                      
-                      <button onClick={ () => this.deleteMessage(oneOfTheMessages.id)}>
-                        <FontAwesomeIcon icon={ faTimes } />
-                      </button>
-
                     </li>
                   )
                   })

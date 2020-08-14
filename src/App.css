@@ -5,6 +5,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .visuallyHidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
+/* ------ */
+/* GLOBAL */
+/* ------ */
+
 
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Amaranth&display=swap');
 
@@ -24,13 +28,10 @@ img {
   object-fit: contain;
 }
 
-
-/* font-family: 'Amaranth', sans-serif;
-font-family: 'ABeeZee', sans-serif; */
-
 /* ------------ */
 /* INSTRUCTIONS */
 /* ------------ */
+
 .instruction {
   padding: 20px 0 20px 0;
   max-width: 800px;
@@ -62,11 +63,8 @@ font-family: 'ABeeZee', sans-serif; */
 
 
 /* -------- */
-/* main app */
+/* MAIN APP */
 /* -------- */
-
-.mainContainer {
-}
 
 nav {
   display: flex;
@@ -84,8 +82,6 @@ nav {
   height: 500px;
   margin: 0 auto;
 }
-
-
 
 /* ------- */
 /* MATCHES */
@@ -161,8 +157,6 @@ nav {
 }
 
 
-
-
 /* ------------ */
 /*     CHAT     */
 /* ------------ */
@@ -205,7 +199,7 @@ nav {
   margin-left: 120px;
   list-style: none;
   min-width: 150px;
-  padding: 10px;
+  padding: 15px;
 }
 
 .whatYouSay {
@@ -221,9 +215,8 @@ nav {
   font-weight: 800;
 }
 
-
 /* ------- */
-/* buttons */
+/* BUTTONS */
 /* ------- */
 
 /* nav button */
@@ -238,8 +231,6 @@ nav {
   color: lightgrey;
   font-size: 2rem;
 }
-
-
 
 /* like/dislike button */
 .like,
@@ -261,4 +252,60 @@ nav {
   background-color: #FD297B;
 }
 
+/* ------------- */
+/* MEDIA QUERIES */
+/* ------------- */
+
+@media (max-width: 450px) {
+
+  body {
+    overflow-x: hidden;
+    border: 5px solid red;
+  }
+
+  /* main */
+  .mainContainer,
+  .chatContainer,
+  .matchContainer {
+  border: 5px solid lightgrey;
+  border-radius: 30px;
+  background: white;
+  width: 300px;
+  margin: 0 auto;
+  padding: 15px 0;
+  }
+
+  .imageContainer {
+    width: 250px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  .like,
+  .dislike {
+    color: white;
+    border: none;
+    margin: 10px 30px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+}
+
+  /* matches */
+  .circleImage img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* message */
+  .sentMessage {
+    margin-bottom: 150px;
+  }
+  .sentMessage li {
+    margin: 15px 0 0 30px;
+  }
+}
 
