@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import Matches from './Matches';
+import Chat from './Chat';
 import './App.css';
-import Button from './Button';
+import Testing from './Testing';
+
+import axios from 'axios';
+import firebase from './firebase';
+
+import {
+  BrowserRouter as Router, 
+  Route, 
+  Link
+} from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaw , faComments , faCog , faAngleLeft, faFlag, faTimes , faHeart } from '@fortawesome/free-solid-svg-icons';
-import firebase from './firebase';
-// import Chat from './Chat';
 
 
 // The dog API - key: 8769c416-f65c-4a98-9456-5478f789a049
@@ -29,7 +38,6 @@ class App extends Component {
       dog: [],
       results: [],
       counter: 0,
-      dogArray: [],
       messages: [],
       userInput: '',
     }
@@ -54,7 +62,10 @@ class App extends Component {
       this.setState({
         dog: results.data[this.state.counter].url,
         results: results.data,
-        // currentImage: this.state.dog.url,
+        dog1: results.data[91].url,
+        dog2: results.data[92].url,
+        dog3: results.data[93].url,
+        dog4: results.data[94].url
       })
     })
 
@@ -138,190 +149,62 @@ class App extends Component {
   render() {
     
     return (
-      <div className="App">
+      <Router>
 
-        <div id="main" className="mainContainer">
-          <nav>
-            <a className="setting">
-              <FontAwesomeIcon icon={ faCog } />
-            </a>
-            <h1> paw<FontAwesomeIcon icon={ faPaw } />nder </h1>
-            <a href="#chat" className="chat">
-              <FontAwesomeIcon icon={ faComments } />
-            </a>
-          </nav>
+        <div className="App">
 
-
-          
-          <div className="imageContainer">
-            <img src={this.state.dog} alt={''}></img >
+          {/* HOME PAGE */}
+          <div className="instruction">
+            <h3>Instructions:</h3>
+            <p>Press the "like" button to go through our card stack of beautiful puppers. Once you have the pup you like, click on the "chat" button to slide into their DM and make a move!</p>
           </div>
 
-          <div>
-
-            <button className="dislike" onClick={this.dislikeClick}>
-              <FontAwesomeIcon icon={faTimes} />
-            </button>
-
-            {/* <button onClick={ () => window.location.reload(false)}className="like">  */}
-            <button onClick={this.handleLike}className="like"> 
-              <FontAwesomeIcon icon={ faHeart } />
-          </button>
-
-          </div>
-
-          {/* <Button />  */}
-        </div>    
-
-        {/* <Chat /> */}
-
-        <div id="chat" className="chatContainer">
+          <div id="main" className="mainContainer">
             <nav>
-              <a href="#main" className="paw">
-                <FontAwesomeIcon icon={ faPaw } />
+              <a className="setting">
+                <FontAwesomeIcon icon={ faCog } />
               </a>
-              <h1>
+              <h1> paw<FontAwesomeIcon icon={ faPaw } />nder </h1>
+              <a href="#match" className="chatButton">
                 <FontAwesomeIcon icon={ faComments } />
-              </h1>
-              
-              <div>
-                {/* empty div for aesthetic */}
-              </div>
+              </a>
             </nav>
-
-            <h2>New Matches</h2>
-            <ul className="topBar">
-              <li className="circleImage">
-                <img src={this.state.dog} alt={''}></img>
-                <p>92 Likes</p>
-              </li>
-              <li className="circleImage">
-                <img src={this.state.dog} alt={''}></img>
-                <p>Smol Doge</p>
-              </li>
-              <li className="circleImage">
-                <img src={this.state.dog} alt={''}></img>
-                <p>Borky Boi</p>
-              </li>
-              <li className="circleImage">
-                <img src={this.state.dog} alt={''}></img>
-                <p>Ruff Pawsome</p>
-              </li>            
-            </ul>
-
-            <h2>Messages</h2>
-            <div className="messages">
-
-              <a href="#sendMessage" className="match">
-                <div className="circleImage">
-                    <img src={this.state.dog} alt={''}></img>
-                </div>
-                <div className="matchText">
-                  <h3>Fluffy Floofer</h3>
-                  <p>woof!</p>
-                </div>
-              </a>
-
-              <a href="#sendMessage" className="match">
-                <div className="circleImage">
-                    <img src={this.state.dog} alt={''}></img>
-                </div>
-                <div className="matchText">
-                  <h3>Wet Nose</h3>
-                  <p>woof!</p>
-                </div>
-              </a>
-
-              <a href="#sendMessage" className="match">
-                <div className="circleImage">
-                    <img src={this.state.dog} alt={''}></img>
-                </div>
-                <div className="matchText">
-                  <h3>Fluffy Floofer</h3>
-                  <p>woof!</p>
-                </div>
-              </a>
-
-              <a href="#sendMessage" className="match">
-                <div className="circleImage">
-                    <img src={this.state.dog} alt={''}></img>
-                </div>
-                <div className="matchText">
-                  <h3>Fluffy Floofer</h3>
-                  <p>woof!</p>
-                </div>
-              </a>
-
-              <a href="#sendMessage" className="match">
-                <div className="circleImage">
-                    <img src={this.state.dog} alt={''}></img>
-                </div>
-                <div className="matchText">
-                  <h3>Fluffy Floofer</h3>
-                  <p>woof!</p>
-                </div>
-              </a>
-              
+            
+            {/* MAIN IMAGE */}
+            <div className="imageContainer">
+              <img src={this.state.dog} alt={''}></img >
             </div>
 
-      </div>
+            {/* LIKE/DISLIKE BUTTONS */}
+            <div>
+              <button className="dislike" onClick={this.dislikeClick}>
+                <FontAwesomeIcon icon={faTimes} />
+              </button>
 
-      <div id="sendMessage" className="sendMessage">
-        <nav>
-          <a href="#chat">
-            <FontAwesomeIcon icon={ faAngleLeft } />
-          </a>
+              <button onClick={this.handleLike}className="like"> 
+                <FontAwesomeIcon icon={ faHeart } />
+              </button>
+            </div>
 
-          <div className="circleImage">
-            <img src={this.state.dog} alt={''}></img>
-          </div>
-          <button onClick={this.reportClick} className="report">
-            <FontAwesomeIcon icon={ faFlag } />
-          </button>
-          
-        </nav>
+          </div>   
 
-        <div className="dogTalk">
-          <div className="circleImage">
-            <img src={this.state.dog} alt={''}></img>
-          </div>
-          <div className="whatDogSaid">
-            <p>woof woof woof</p>
-          </div>
+          {/* TESTING */}
+          {/* <Route path="/testing" component={ Testing } />
+          <Route path="/match" component={ Matches } />
+          <Route path="/chat" component={ Chat } />
+
+          <Link to="/testing">Testing</Link> */}
+
+          {/* MATCH PAGE */}
+
+          <Matches dog={this.state.dog} dog1={this.state.dog1} dog2={this.state.dog2} dog3={this.state.dog3} dog4={this.state.dog4}/>
+
+          {/* CHAT PAGE */}
+
+          <Chat dog={this.state.dog}  reportClick={this.reportClick} messages={this.state.messages} handleChange={this.handleChange} handleClick={this.handleClick} userInput={this.state.userInput} />
+
         </div>
-
-          <ul className="sentMessage">
-            {this.state.messages.map( (oneOfTheMessages) => {
-              return(
-                <li key={oneOfTheMessages.id}>
-                  <p>{oneOfTheMessages}</p>
-                  
-                  <button onClick={ () => this.deleteMessage(oneOfTheMessages.id)}>
-                    <FontAwesomeIcon icon={ faTimes } />
-                  </button>
-
-                </li>
-              )
-              })
-            }
-          </ul>
-
-        <form className="whatYouSay" action="submit">
-
-          <label htmlFor="userInput" className="sr-only">Message
-          </label>
-
-          <input onChange={this.handleChange} type="text" name="userInput" placeholder="Message" value={this.state.userInput} id="userInput"></input>
-
-          <button onClick={this.handleClick }className="sendButton">Send</button>
-
-        </form>
-
-      </div>
-      
-      </div>
-
-
+      </Router>
 
     );
 
