@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Matches from './Matches';
 import Chat from './Chat';
 import './App.css';
-import Testing from './Testing';
 
 import axios from 'axios';
 import firebase from './firebase';
@@ -73,10 +72,7 @@ class App extends Component {
     const dbRef = firebase.database().ref();
 
     dbRef.on('value', (response) => {
-      console.log(response.val() );
-
       const data = response.val();
-
       const newMessagesArray = [];
 
       // Use a for in loop to iterate through our object
@@ -94,25 +90,19 @@ class App extends Component {
 
   //Like button
   handleLike = () => {
-    const newCounter = this.state.counter + 1;
-    console.log(newCounter);
-    
+    const newCounter = this.state.counter + 1;    
     this.setState({     
       counter: newCounter,
       dog: this.state.results[this.state.counter].url,
     })
 
   }
-  
-  // console.log(results)
 
   //handleChange for user input
   handleChange = (event) => {
     this.setState({
       userInput: event.target.value,
     })
-
-    console.log(event.target.value)
   }
 
   //handleClick to submit
@@ -128,7 +118,6 @@ class App extends Component {
 
   //Button to delete a message
   deleteMessage = (message) => {
-    console.log(message);
     const dbRef = firebase.database().ref();
     dbRef.child(message).remove();
   }
@@ -187,13 +176,6 @@ class App extends Component {
             </div>
 
           </div>   
-
-          {/* TESTING */}
-          {/* <Route path="/testing" component={ Testing } />
-          <Route path="/match" component={ Matches } />
-          <Route path="/chat" component={ Chat } />
-
-          <Link to="/testing">Testing</Link> */}
 
           {/* MATCH PAGE */}
 

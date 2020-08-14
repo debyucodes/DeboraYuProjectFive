@@ -32,7 +32,9 @@ font-family: 'ABeeZee', sans-serif; */
 /* INSTRUCTIONS */
 /* ------------ */
 .instruction {
-  padding: 40px 0 20px 0;
+  padding: 20px 0 20px 0;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .instruction h3 {
@@ -106,7 +108,7 @@ nav {
   display: flex;
   justify-content: space-evenly;
   list-style: none;
-  margin-left: -30px
+  margin: 20px 0;
 }
 
 .topBar li:first-child{
@@ -118,10 +120,22 @@ nav {
   font-weight: 800;
 }
 
-h2 {
+.matchContainer h2 {
   text-align: left;
   margin-left: 20px;
   color:  #FF5864;
+  font-size: 1.2rem;
+}
+
+.matchContainer h3 {
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.matchContainer p {
+  font-size: 1rem;
+  text-align: left;
+  margin-top: 10px;
 }
 
 .circleImage img {
@@ -133,7 +147,7 @@ h2 {
 
 .match {
   display: flex;
-  margin: 10px 0px 0px 20px;
+  margin: 25px 0px 0px 20px;
 }
 
 .matchText {

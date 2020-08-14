@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaw , faComments } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft , faComments } from '@fortawesome/free-solid-svg-icons';
 
 class Matches extends Component {
   render() {
     return(
-      <div>
+      <div id="match">
 
         <div className="instruction">
           <h3>Instructions:</h3>
@@ -13,10 +13,10 @@ class Matches extends Component {
         </div>
       
 
-        <div id="match" className="matchContainer">
+        <div className="matchContainer">
               <nav>
                 <a href="#main" className="paw">
-                  <FontAwesomeIcon icon={ faPaw } />
+                  <FontAwesomeIcon icon={ faAngleLeft } />
                 </a>
                 <h1>
                   <FontAwesomeIcon icon={ faComments } />
@@ -43,7 +43,7 @@ class Matches extends Component {
                 </li>
                 <li className="circleImage">
                   <img src={this.props.dog4} alt={''}></img>
-                  <p>Ruff Pawsome</p>
+                  <p>Ruff Furry</p>
                 </li>            
               </ul>
 
@@ -85,7 +85,7 @@ class Matches extends Component {
                       <img src={this.props.dog} alt={''}></img>
                   </div>
                   <div className="matchText">
-                    <h3>Furriest Floof</h3>
+                    <h3>Floofy Pawsome</h3>
                     <p>woof!</p>
                   </div>
                 </a>

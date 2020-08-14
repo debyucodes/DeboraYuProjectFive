@@ -5,13 +5,13 @@ import { faAngleLeft, faFlag, faTimes } from '@fortawesome/free-solid-svg-icons'
 class Chat extends Component {
   render() {
     return(
-      <div>
+      <div id="sendMessage">
 
         <div className="instruction">
           <h3>Instructions:</h3>
           <p>Congrats! Looks like you are in a chat with the love of your life. Here's your chance to drop your goodest pick-up lines to your pawnderella. If you are having second thoughts, click "back" button to go back to main page to match with another pup. Yikes!</p>
         </div>
-        <div id="sendMessage" className="chatContainer">
+        <div className="chatContainer">
             <nav>
               <a class="navButton" href="#main">
                 <FontAwesomeIcon icon={ faAngleLeft } />
